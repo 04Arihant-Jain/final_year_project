@@ -15,7 +15,7 @@ class ChoiceInput(forms.ChoiceField):
     input_type = 'choice'
 
 class SignUpForm(UserCreationForm):
-
+    customer = forms.BooleanField(required=True)
     address = forms.CharField(max_length=250)
     city = forms.CharField(max_length=30)
     postcode = forms.CharField(max_length=30, help_text='postcode field')
@@ -26,7 +26,7 @@ class SignUpForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', 'address',
+        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2','customer', 'address',
                   'city', 'postcode', )
         widgets = {
             'date_birth': DateInput(),

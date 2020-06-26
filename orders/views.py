@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from django.shortcuts import redirect, render_to_response, get_object_or_404, render
+from django.shortcuts import redirect, render, get_object_or_404, render
 from django.urls import reverse
 from .models import OrderItem
 from .forms import Order, OrderCreateForm
@@ -22,25 +22,14 @@ def order_create(request):
                                         product=item['product'],
                                         price=item['price'],
                                         quantity=item['quantity'])
-            # clear the cart
             cart.clear()
             #launch asynchronous task
             #order_created.delay(order.id)
             #set order in session
             request.session['order.id']=order.id
-            #redirect for payment
-            return redirect(reverse('payment:Payment'))
-            """
-            return render(request,
-                        'orders/order/created.html',
-                        {'order': order})
-            """
+            #redirect for warehouse
+            return redirect(reverse('warehouse:searchproducts'))
         else:
             return render(request, 'orders/order/create.html', {'form': form})
            # else:
            #     form = OrderCreateForm()
-    
-   # return render(request,
-   #              'orders/order/create.html',
-   #               {'cart': cart, 'form': form})
-

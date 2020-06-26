@@ -24,10 +24,12 @@ urlpatterns = [
     path('cart/', include('cart.urls', namespace='cart')),
     path('payment/', include('payment.urls', namespace='payment')),
     path('orders/', include('orders.urls', namespace='orders')),
+    path('warehouse/', include('warehouse.urls', namespace='warehouse')),
     path('', include('shop.urls', namespace='shop')),
+    path('accounts/',include('allauth.urls')),
 
 ]
 
-if settings.DEBUG:    
-    urlpatterns += static(settings.MEDIA_URL,                          
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
                             document_root=settings.MEDIA_ROOT)

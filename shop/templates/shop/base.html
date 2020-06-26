@@ -1,5 +1,6 @@
-
+{% load socialaccount %}
 {% load static %}
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -109,6 +110,7 @@
                               <div class="dropdown-menu">
                                 <a class="dropdown-item" href="{% url 'users:login' %}">Login</a>
                                 <a class="dropdown-item" href="{% url 'users:signup' %}">SignUp</a>
+                                <a class="btn btn-social-icon btn-google" href="{% provider_login_url 'google' %}"><i class="fa fa-google"></i> Google</a>
                               </div>
                             </div>
                           </li>

@@ -19,15 +19,8 @@
             <div class="col-md-12 text-center">
               <span class="icon-check_circle display-3 text-success"></span>
               <h2 class="display-3 text-black">Make Payment</h2>
-              <p><form action="{% url 'payment:charge' %}" method="post">
-                  {% csrf_token %}
-                  
-                  <script src="https://checkout.stripe.com/checkout.js"  class="stripe-button"
-                          data-key="{{ key }}"
-                          data-description="The Shoppee"
-                          data-amount=Rs. {{ cart.get_total_price }}
-                          data-locale="auto"></script>
-                </form></p>
+              <a href="{% url 'warehouse:searchproducts' %}" ><button class="btn btn-primary btn-lg py-3 btn-block" >Investigate order</button></a>
+
             </div>
           </div>
         </div>
